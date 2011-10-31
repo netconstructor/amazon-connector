@@ -1,0 +1,30 @@
+<!-- BEGIN_INCLUDE(sqs:send-message) -->
+<sqs:send-message/>
+<!-- END_INCLUDE(sqs:send-message) -->
+<!-- BEGIN_INCLUDE(sqs:get-url) -->
+<sqs:get-url/>
+<!-- END_INCLUDE(sqs:get-url) -->
+<!-- BEGIN_INCLUDE(sqs:receive-messages) -->
+<flow name="main">
+    <sqs:receive-messages/>
+    <logger level="INFO" message="Received message with #[payload]"/>
+</flow>
+<!-- END_INCLUDE(sqs:receive-messages) -->
+<!-- BEGIN_INCLUDE(sqs:delete-message) -->
+<sqs:delete-message receiptHandle="xxx"/>
+<!-- END_INCLUDE(sqs:delete-message) -->
+<!-- BEGIN_INCLUDE(sqs:delete-queue) -->
+<sqs:delete-queue queueName="abc"/>
+<!-- END_INCLUDE(sqs:delete-queue) -->
+<!-- BEGIN_INCLUDE(sqs:get-queue-attributes) -->
+<sqs:get-queue-attributes attribute="MAXIUMUM_MESSAGE_SIZE"/>
+<!-- END_INCLUDE(sqs:get-queue-attributes) -->
+<!-- BEGIN_INCLUDE(sqs:set-queue-attribute) -->
+<sqs:set-queue-attribute attribute="VISIBILITY_TIMEOUT" value="86400"/>
+<!-- END_INCLUDE(sqs:set-queue-attribute) -->
+<!-- BEGIN_INCLUDE(sqs:add-permission) -->
+<sqs:add-permission label="message" accountId="125074342641" action="SendMessage"/>
+<!-- END_INCLUDE(sqs:add-permission) -->
+<!-- BEGIN_INCLUDE(sqs:remove-permission) -->
+<sqs:remove-permission label="message"/>
+<!-- END_INCLUDE(sqs:remove-permission) -->

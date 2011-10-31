@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mule xmlns="http://www.mulesoft.org/schema/mule/core"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xmlns:spring="http://www.springframework.org/schema/beans"
+      xmlns:sqs="http://www.mulesoft.org/schema/mule/sqs"
+      xmlns:context="http://www.springframework.org/schema/context"
+      xsi:schemaLocation="
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+         http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd
+        http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/3.1/mule.xsd
+        http://www.mulesoft.org/schema/mule/sqs http://www.mulesoft.org/schema/mule/sqs/1.0/mule-sqs.xsd">
+
+    <spring:beans>
+        <context:property-placeholder
+                location="classpath:credentials.properties"/>
+    </spring:beans>
+
+    <sqs:config accessKey="${aws.accessKey}" secretAccessKey="${aws.secretAccessKey}"/>
+
+    <flow name="sendMessage">
+        <sqs:send-message queueName="test"/>
+    </flow>
+
+</mule>
